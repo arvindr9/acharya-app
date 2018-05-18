@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { createBottomTabNavigator } from 'react-navigation';
-
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
+import Acharyas from './components/tabs/Acharyas';
+import Modal from './components/screens/Modal';
 class App extends React.Component {
   render() {
     return (
@@ -28,6 +29,7 @@ class SettingsScreen extends React.Component {
 export default createBottomTabNavigator({
   Home: { screen: App },
   Settings: { screen: SettingsScreen },
+  Acharyas: {screen: Acharyas},
 });
 
 const styles = StyleSheet.create({
@@ -38,3 +40,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+const navigator = createStackNavigator(
+  {
+    Home: {
+      screen: App
+    },
+    Acharyas: {
+      screen: Acharyas
+    },
+    Modal: {
+      screen: Modal
+    }
+  }
+)
